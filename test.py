@@ -6,8 +6,10 @@ from tensorflow.keras.models import load_model
 # Load model
 model = load_model("movie_review_classifier.h5")
 
-# Load IMDB word index
-word_index = imdb.get_word_index()
+import json
+
+with open("imdb_word_index.json", "r") as f:
+    word_index = json.load(f)
 
 # Reverse mapping
 word_to_id = {k: (v + 3) for k, v in word_index.items()}
